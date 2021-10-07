@@ -7,11 +7,11 @@ const methodOverride=require('method-override');
 
 
 
-mongoose.connect('mongodb://localhost:27017/reception-db')
+mongoose.connect('mongodb+srv://kunaldb:Kunalchhabra@1209@cluster0.2fykg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
 .then(()=>{
     console.log("DB CONNECTED")
 })
-.catch((er)=>{
+.catch((err)=>{
     console.log(err)
 })
 app.set('view engine','ejs');
@@ -58,7 +58,7 @@ app.delete('/home/:id',async (req,res)=>{
 
 function sendemail(email,cinh,cinm){
     const sgMail=require('@sendgrid/mail');
-   const  sendgrid=//'your api key';
+   const  sendgrid="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";
   sgMail.setApiKey(sendgrid);
   let m=cinm.toString();
   let h=cinh.toString();;
@@ -70,7 +70,7 @@ function sendemail(email,cinh,cinm){
   }
   const msg={
       to: email,
-      from: //"your email",
+      from: "kunalchhabra1221@gmail.com",
       subject:"Entering building",
       text:`Hi you entered the building at ${h}:${m}`
   };
@@ -80,7 +80,7 @@ function sendemail(email,cinh,cinm){
 
 function sendexmail(email,couth,coutm){
     const sgMail=require('@sendgrid/mail');
-   const  sendgrid=//'your api key';
+   const  sendgrid="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";
   sgMail.setApiKey(sendgrid);
   let m=coutm.toString();
   let h=couth.toString();
@@ -92,7 +92,7 @@ function sendexmail(email,couth,coutm){
   }
   const msg={
       to: email,
-      from: //"your email",
+      from: "kunalchhabra1221@gmail.com" ,
       subject:"Checking out",
       text:`Hi you checked out at ${h}:${m}`
   };
